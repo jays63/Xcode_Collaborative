@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  XCode_Collaborative
-//
-//  Created by Student on 4/27/26.
-//
-
 import SwiftUI
 
 struct ContentView: View {
