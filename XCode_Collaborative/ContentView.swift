@@ -8,8 +8,8 @@ struct ContentView: View {
             Button("Browse dex"){}
             Button("Visit the damage calculator"){}
             Button("Visit the unaffiliated battle simulator"){}
-            Button("View items")
-            Button("Get a meme, feature may be axed")
+            Button("View items"){}
+            Button("Get a meme, feature may be axed"){}
         }
         .padding()
     }
