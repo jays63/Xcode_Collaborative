@@ -9,7 +9,7 @@ struct move: Codable{
     var power: Int;
 }
 
-struct item: Codable{
+struct pokemonItem: Codable{
     var id: Int;
     var name: String;
     var description: String;
