@@ -64,8 +64,8 @@ class NetworkClient {
         }
     }
     
-    func search(input: String) async{
-        let URLbase: String = "https://pokeapi.co/api/v2/"
+    func search(input: String, queryType: String) async{
+        let URLbase: String = "https://pokeapi.co/api/v2/\(queryType)/\(input)"
         let url: URL? = URL(string: URLbase)
         guard let urlUnwrapped = url else {
             return
