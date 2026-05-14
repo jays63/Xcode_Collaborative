@@ -63,4 +63,18 @@ class NetworkClient {
             print(error)
         }
     }
+    
+    func search(input: String) async{
+        let URLbase: String = "https://pokeapi.co/api/v2/"
+        let url: URL? = URL(string: URLbase)
+        guard let urlUnwrapped = url else {
+            return
+        }
+        do {
+            let (data, response) = try await URLSession.shared.data(from: urlUnwrapped)
+            let _ = response as! HTTPURLResponse
+        } catch let error {
+            print(error)
+        }
+    }
 }
