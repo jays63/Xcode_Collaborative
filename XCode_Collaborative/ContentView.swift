@@ -42,13 +42,11 @@ struct ContentView: View {
                             
                         }
                     }
-                    Button("Find the damage calculator"){}
                     label: do {
-                        Link("Here", destination: URL(string: "https://calc.pokemonshowdown.com/")!)
+                        Link("A damage calculator, in your very own pocket!", destination: URL(string: "https://calc.pokemonshowdown.com/")!)
                     }
-                    Button("Visit the unaffiliated battle simulator"){}
                     label: do {
-                        Link("Visit the battle simulator (This app is not affiliated with the above)", destination: URL(string: "https://pokemonshowdown.com/")!)
+                        Link("Visit the battle simulator (Not affiliated)", destination: URL(string: "https://pokemonshowdown.com/")!)
                     }
                     
                 }
