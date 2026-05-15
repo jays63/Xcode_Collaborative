@@ -42,12 +42,10 @@ struct ContentView: View {
                             
                         }
                     }
-                    label: do {
-                        Link("A damage calculator, in your very own pocket!", destination: URL(string: "https://calc.pokemonshowdown.com/")!)
-                    }
-                    label: do {
-                        Link("Visit the battle simulator (Not affiliated)", destination: URL(string: "https://pokemonshowdown.com/")!)
-                    }
+                    Link("A damage calculator, in your very own pocket!", destination: URL(string: "https://calc.pokemonshowdown.com/")!)
+                        .buttonStyle(.glassProminent)
+                    Link("Visit the battle simulator (Not affiliated)", destination: URL(string: "https://pokemonshowdown.com/")!)
+                        .buttonStyle(.glassProminent)
                     
                 }
                 .padding()
