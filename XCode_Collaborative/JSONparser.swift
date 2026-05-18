@@ -12,7 +12,8 @@ struct move: Codable{
 struct pokemonItem: Codable{
     var id: Int;
     var name: String;
-    var description: String;
+    var abilities: [String];
+    var forms: [String];
 }
 
 struct pokemon: Codable{
