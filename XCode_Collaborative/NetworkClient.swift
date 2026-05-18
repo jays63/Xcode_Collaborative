@@ -1,5 +1,8 @@
 import SwiftUI
 
+enum searcher {
+    case mon, item, move
+}
 
 @Observable
 class NetworkClient {
@@ -11,7 +14,7 @@ class NetworkClient {
     private var annoyance: move = move(id: 0, name: "", effect_chance: 0.0, pp: 0, priority: 0, power: 0)
     
     func getpokemon(input: String) async{
-        var urlStr: String = "https://pokeapi.co/api/v2/pokemon/\(input)"
+        let urlStr: String = "https://pokeapi.co/api/v2/pokemon/\(input)"
         let url: URL? = URL(string: urlStr)
         guard let urlUnwrapped = url else {
             return
@@ -29,7 +32,7 @@ class NetworkClient {
     }
     
     func getItem(input: String) async {
-        var urlStr: String = "https://pokeapi.co/api/v2/items/\(input)"
+        let urlStr: String = "https://pokeapi.co/api/v2/items/\(input)"
         let url: URL? = URL(string: urlStr)
         guard let urlUnwrapped = url else {
             return
@@ -47,7 +50,7 @@ class NetworkClient {
     }
     
     func getMove(input: String) async {
-        var urlStr: String = "https://pokeapi.co/api/v2/moves/\(input)"
+        let urlStr: String = "https://pokeapi.co/api/v2/moves/\(input)"
         let url: URL? = URL(string: urlStr)
         guard let urlUnwrapped = url else {
             return
@@ -64,7 +67,7 @@ class NetworkClient {
         }
     }
     
-    func search(input: String, queryType: String) async{
+    func search(input: String, queryType: searcher) async{
         let URLbase: String = "https://pokeapi.co/api/v2/\(queryType)/\(input)"
         let url: URL? = URL(string: URLbase)
         guard let urlUnwrapped = url else {
@@ -73,6 +76,17 @@ class NetworkClient {
         do {
             let (data, response) = try await URLSession.shared.data(from: urlUnwrapped)
             let _ = response as! HTTPURLResponse
+            switch queryType {
+            case .mon:
+                await getpokemon(input: input)
+                for mon in data{
+                    let nextMon = try JSONDecoder.decode(mon.self, from: data)
+                }
+            case .item:
+                await getItem(input: input)
+            case .move:
+                await getMove(input: input)
+            }
         } catch let error {
             print(error)
         }
