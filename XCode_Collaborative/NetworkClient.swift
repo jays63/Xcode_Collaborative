@@ -8,8 +8,8 @@ enum searcher {
 class NetworkClient {
     private var monList:[pokemon]=[]
     private var moveList:[move]=[]
-    private var mon: pokemon = pokemon(id: 0, name: "", abilities: [])
-    private var singleItem: item = pokemonItem(id: 0, name: "", description: "")
+    private var mon: pokemon = pokemon(id: 0, name: "", abilities: [], stats: [], types: [])
+    private var singleItem: item = item(id: 0, name: "", description: "")
     private var annoyance: move = move(id: 0, name: "", effect_chance: 0.0, pp: 0, priority: 0, power: 0)
     
     func getpokemon(input: String) async{
@@ -22,6 +22,7 @@ class NetworkClient {
             let (data, response) = try await URLSession.shared.data(from: urlUnwrapped)
             let _ = response as! HTTPURLResponse
             mon = try JSONDecoder().decode(pokemon.self, from: data)
+            monList.append(mon)
         } catch let error {
             print(error)
         }
@@ -36,10 +37,6 @@ class NetworkClient {
         do {
             let (data, response) = try await URLSession.shared.data(from: urlUnwrapped)
             let _ = response as! HTTPURLResponse
-            let monResp = try JSONDecoder().decode([pokemon].self, from: data)
-            for mon in monResp{
-                monList.append(mon)
-            }
         } catch let error {
             print(error)
         }
@@ -54,10 +51,6 @@ class NetworkClient {
         do {
             let (data, response) = try await URLSession.shared.data(from: urlUnwrapped)
             let _ = response as! HTTPURLResponse
-            let monResp = try JSONDecoder().decode([pokemon].self, from: data)
-            for mon in monResp{
-                monList.append(mon)
-            }
         } catch let error {
             print(error)
         }
@@ -70,8 +63,6 @@ class NetworkClient {
             return
         }
         do {
-            let (data, response) = try await URLSession.shared.data(from: urlUnwrapped)
-            let _ = response as! HTTPURLResponse
             switch queryType {
             case .mon:
                 await getpokemon(input: input)
