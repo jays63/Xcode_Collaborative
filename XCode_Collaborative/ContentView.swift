@@ -1,8 +1,5 @@
 import SwiftUI
 
-enum searchCase{
-    case pokemon, item, move, ability
-}
 
 struct ContentView: View {
     @Environment(NetworkClient.self) private var networkClient;
@@ -53,9 +50,9 @@ struct ContentView: View {
     }
 }
 
-func search(in: searchCase) async{
+func search(in: searcher, target: String) async{
     Task{
-        
+        NetworkClient().search(input: target, queryType: in)
     }
 }
 

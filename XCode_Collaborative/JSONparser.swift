@@ -24,7 +24,7 @@ struct damageClass: Codable {
 struct item: Codable{
     var id: Int;
     var name: String;
-    var description: String;
+    var effect_entries: Note;
 }
 
 struct pokemon: Codable{
@@ -48,4 +48,8 @@ struct Stat: Codable {
 struct notes: Codable {
     var name: String;
     var URL: String;
+}
+
+struct Note: Codable{
+    var short_effect: String;
 }
