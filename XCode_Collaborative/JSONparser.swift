@@ -3,10 +3,22 @@ import Foundation
 struct move: Codable{
     var id: Int;
     var name: String;
-    var effect_chance: Double;
+    var accuracy: Int;
+    var effect_chance: Int;
     var pp: Int;
     var priority: Int;
     var power: Int;
+    var damage_class: damageClass;
+    var effect_entries: entry;
+}
+
+struct entry: Codable {
+    var short_effect: String;
+}
+
+struct damageClass: Codable {
+    var name: String;
+    var url: String;
 }
 
 struct item: Codable{
