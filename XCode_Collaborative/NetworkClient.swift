@@ -58,22 +58,13 @@ class NetworkClient {
     }
     
     func search(input: String, queryType: searcher) async{
-        let URLbase: String = "https://pokeapi.co/api/v2/\(queryType)/\(input)"
-        let url: URL? = URL(string: URLbase)
-        guard let urlUnwrapped = url else {
-            return
-        }
-        do {
-            switch queryType {
-            case .mon:
-                await getpokemon(input: input)
-            case .item:
-                await getItem(input: input)
-            case .move:
-                await getMove(input: input)
-            }
-        } catch let error {
-            print(error)
+        switch queryType {
+        case .mon:
+            await getpokemon(input: input)
+        case .item:
+            await getItem(input: input)
+        case .move:
+            await getMove(input: input)
         }
     }
 }
