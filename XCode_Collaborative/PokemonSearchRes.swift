@@ -13,7 +13,8 @@ struct PokemonSearchRes :View {
             VStack {
                 Text("Pokemon name: \(networkClient.mon.name)")
                 Text("Type(s): \(networkClient.mon.types)")
-                Text("Abilities: \(networkClient.mon.abilities)")
+                ForEach Ability in networkClient.mon.abilities{
+                }
                 Text("Stats: \(networkClient.mon.stats)")
             }
         }

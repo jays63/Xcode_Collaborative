@@ -38,7 +38,7 @@ struct pokemon: Codable{
 struct Ability: Codable {
     var is_hidden: Bool;
     var slot: Int
-    var abilityName: Name;
+    var ability: Name;
 }
 
 struct Name: Codable{
