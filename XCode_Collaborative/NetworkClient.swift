@@ -6,13 +6,13 @@ enum searcher {
 
 @Observable
 class NetworkClient {
-    private var monList:[pokemon]=[]
-    private var mon: pokemon = pokemon(id: 0, name: "", abilities: [], stats: [], types: [])
-    private var singleItem: item = item(id: 0, name: "", effect_entries: Note(short_effect: ""))
-    private var annoyance: move = move(id: 0, name: "", accuracy: 0, effect_chance: 0, pp: 0, priority: 0, power: 0, damage_class: damageClass(name: "", url: ""), effect_entries: entry(short_effect: ""))
+    private(set) var mon: pokemon = pokemon(id: 0, name: "", abilities: [], stats: [], types: [])
+    private(set) var singleItem: item = item(id: 0, name: "", effect_entries: Note(short_effect: ""))
+    private(set) var annoyance: move = move(id: 0, name: "", accuracy: 0, effect_chance: 0, pp: 0, priority: 0, power: 0, damage_class: damageClass(name: "", url: ""), effect_entries: entry(short_effect: ""))
     
     func getpokemon(input: String) async{
         let urlStr: String = "https://pokeapi.co/api/v2/pokemon/\(input)"
+        print(urlStr)
         let url: URL? = URL(string: urlStr)
         guard let urlUnwrapped = url else {
             return
@@ -21,7 +21,6 @@ class NetworkClient {
             let (data, response) = try await URLSession.shared.data(from: urlUnwrapped)
             let _ = response as! HTTPURLResponse
             mon = try JSONDecoder().decode(pokemon.self, from: data)
-            monList.append(mon)
         } catch let error {
             print(error)
         }

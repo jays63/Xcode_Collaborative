@@ -7,6 +7,7 @@ struct ContentView: View {
     @State private var itemSearch: Bool = false;
     @State private var moveSearch: Bool = false;
     @State private var abilitySearch: Bool = false;
+    @State private var text: String = ""
     var body: some View {
         ZStack{
             Image(.pokeball)
@@ -18,25 +19,24 @@ struct ContentView: View {
                             pokemonSearch = true
                         }
                         .navigationDestination(isPresented: $pokemonSearch){
-                            
+                            VStack  {
+                                PokemonSearchRes()
+                            }
+                            .searchable(text: $text)
+                            .onSubmit (of: .search){
+                                search(entered: .mon, target: text)
+                            }
                         }
                         Button("View items"){
                             itemSearch=true
                         }
                         .navigationDestination(isPresented: $itemSearch){
-                            
                         }
                         Button("Browse moves"){
                             moveSearch=true
                         }
-                        .navigationDestination(isPresented: $moveSearch){
-                            
-                        }
                         Button("Browse abilities"){
                             abilitySearch=true
-                        }
-                        .navigationDestination(isPresented: $abilitySearch){
-                            
                         }
                     }
                     Link("A damage calculator, in your very own pocket!", destination: URL(string: "https://calc.pokemonshowdown.com/")!)
@@ -48,11 +48,11 @@ struct ContentView: View {
                 .padding()
         }
     }
-}
-
-func search(in: searcher, target: String) async{
-    Task{
-        NetworkClient().search(input: target, queryType: in)
+    
+    func search(entered: searcher, target: String) {
+        Task{
+            await networkClient.search(input: target, queryType: entered)
+        }
     }
 }
 

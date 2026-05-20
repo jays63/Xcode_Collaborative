@@ -32,24 +32,36 @@ struct pokemon: Codable{
     var name:String;
     var abilities: [Ability];
     var stats: [Stat];
-    var types: [String]
+    var types: [PokemonTypes]
 }
 
 struct Ability: Codable {
     var is_hidden: Bool;
     var slot: Int
+    var abilityName: Name;
+}
+
+struct Name: Codable{
+    var name: String
 }
 
 struct Stat: Codable {
     var base_stat: Int
-    var desc: [notes]
+    var stat: notes
 }
 
 struct notes: Codable {
     var name: String;
-    var URL: String;
 }
 
 struct Note: Codable{
     var short_effect: String;
+}
+
+struct PokemonTypes: Codable{
+    var type: PokemonType
+}
+
+struct PokemonType: Codable{
+    var name: String
 }
