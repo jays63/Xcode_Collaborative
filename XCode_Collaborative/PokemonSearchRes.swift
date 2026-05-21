@@ -11,7 +11,7 @@ struct PokemonSearchRes :View {
             Color(.white)
                 .ignoresSafeArea()
             VStack {
-                Text("Pokemon name: \(networkClient.mon.name)")                
+                Text("Pokemon name: \(networkClient.mon.name)")
             }
         }
     }
