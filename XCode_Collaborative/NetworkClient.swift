@@ -21,6 +21,9 @@ class NetworkClient {
             let (data, response) = try await URLSession.shared.data(from: urlUnwrapped)
             let _ = response as! HTTPURLResponse
             mon = try JSONDecoder().decode(pokemon.self, from: data)
+            for str in mon.stats {
+                print("\(str.stat.name)   \(str.base_stat)")
+            }
         } catch let error {
             print(error)
         }

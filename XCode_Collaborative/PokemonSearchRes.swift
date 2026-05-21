@@ -11,11 +11,7 @@ struct PokemonSearchRes :View {
             Color(.white)
                 .ignoresSafeArea()
             VStack {
-                Text("Pokemon name: \(networkClient.mon.name)")
-                Text("Type(s): \(networkClient.mon.types)")
-                ForEach Ability in networkClient.mon.abilities{
-                }
-                Text("Stats: \(networkClient.mon.stats)")
+                Text("Pokemon name: \(networkClient.mon.name)")                
             }
         }
     }
