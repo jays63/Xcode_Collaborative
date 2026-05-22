@@ -6,7 +6,6 @@ struct ContentView: View {
     @State private var pokemonSearch: Bool = false;
     @State private var itemSearch: Bool = false;
     @State private var moveSearch: Bool = false;
-    @State private var abilitySearch: Bool = false;
     @State private var text: String = ""
     var body: some View {
         ZStack{
@@ -31,12 +30,25 @@ struct ContentView: View {
                             itemSearch=true
                         }
                         .navigationDestination(isPresented: $itemSearch){
+                            VStack{
+                                ItemSearchRes()
+                            }
+                            .searchable(text: $text)
+                            .onSubmit (of: .search){
+                                search(entered: .item, target: text)
+                            }
                         }
                         Button("Browse moves"){
                             moveSearch=true
                         }
-                        Button("Browse abilities"){
-                            abilitySearch=true
+                        .navigationDestination(isPresented: $moveSearch){
+                            VStack{
+                                MoveSearchRes()
+                            }
+                            .searchable(text: $text)
+                            .onSubmit (of: .search){
+                                search(entered: .move, target: text)
+                            }
                         }
                     }
                     Link("A damage calculator, in your very own pocket!", destination: URL(string: "https://calc.pokemonshowdown.com/")!)

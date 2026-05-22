@@ -41,7 +41,7 @@ struct Ability: Codable {
     var ability: Name;
 }
 
-struct Name: Codable{
+struct Name: Hashable, Codable{
     var name: String
 }
 
@@ -62,6 +62,6 @@ struct PokemonTypes: Codable{
     var type: PokemonType
 }
 
-struct PokemonType: Codable{
+struct PokemonType: Hashable, Codable{
     var name: String
 }
