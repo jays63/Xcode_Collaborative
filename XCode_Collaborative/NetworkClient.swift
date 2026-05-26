@@ -7,8 +7,8 @@ enum searcher {
 @Observable
 class NetworkClient {
     private(set) var mon: pokemon = pokemon(id: 0, name: "", abilities: [], stats: [], types: [])
-    private(set) var singleItem: item = item(id: 0, name: "", effect_entries: Note(short_effect: ""))
-    private(set) var annoyance: move = move(id: 0, name: "", accuracy: 0, effect_chance: 0, pp: 0, priority: 0, power: 0, damage_class: damageClass(name: "", url: ""), effect_entries: entry(short_effect: ""))
+    private(set) var singleItem: item = item(id: 0, name: "", effect_entries: [Note(short_effect: "")])
+    private(set) var annoyance: move = move(id: 0, name: "", accuracy: 0, effect_chance: 0, pp: 0, priority: 0, power: 0, damage_class: damageClass(name: "", url: ""), effect_entries: [entry(short_effect: "")])
     
     func getpokemon(input: String) async{
         let urlStr: String = "https://pokeapi.co/api/v2/pokemon/\(input)"
@@ -27,7 +27,7 @@ class NetworkClient {
     }
     
     func getItem(input: String) async {
-        let urlStr: String = "https://pokeapi.co/api/v2/items/\(input)"
+        let urlStr: String = "https://pokeapi.co/api/v2/item/\(input)/"
         let url: URL? = URL(string: urlStr)
         guard let urlUnwrapped = url else {
             return
@@ -42,7 +42,7 @@ class NetworkClient {
     }
     
     func getMove(input: String) async {
-        let urlStr: String = "https://pokeapi.co/api/v2/moves/\(input)"
+        let urlStr: String = "https://pokeapi.co/api/v2/move/\(input)"
         let url: URL? = URL(string: urlStr)
         guard let urlUnwrapped = url else {
             return

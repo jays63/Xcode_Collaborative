@@ -12,7 +12,7 @@ struct ItemSearchRes :View {
                 .ignoresSafeArea()
             VStack {
                 Text("Item name: \(networkClient.singleItem.name)")
-                Text("Item effect: \(networkClient.singleItem.effect_entries)")
+                Text("Item effect: \(networkClient.singleItem.effect_entries.first?.short_effect)")
             }
         }
     }
