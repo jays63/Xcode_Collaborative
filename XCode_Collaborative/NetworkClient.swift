@@ -8,7 +8,7 @@ enum searcher {
 class NetworkClient {
     private(set) var mon: pokemon = pokemon(id: 0, name: "", abilities: [], stats: [], types: [])
     private(set) var singleItem: item = item(id: 0, name: "", effect_entries: [Note(short_effect: "")])
-    private(set) var annoyance: move = move(id: 0, name: "", accuracy: 0, effect_chance: 0, pp: 0, priority: 0, power: 0, damage_class: damageClass(name: "", url: ""), effect_entries: [entry(short_effect: "")])
+    private(set) var annoyance: move = move(id: 0, name: "", accuracy: 0, effect_chance: 0, pp: 0, priority: 0, power: 0, damage_class: damageClass(name: "", url: ""), effect_entries: [entry(short_effect: "", language: Lang(name: ""))])
     
     func getpokemon(input: String) async{
         let urlStr: String = "https://pokeapi.co/api/v2/pokemon/\(input)"
