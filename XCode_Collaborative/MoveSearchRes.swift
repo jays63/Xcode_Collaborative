@@ -14,13 +14,21 @@ struct MoveSearchRes :View {
             if visible{
                 VStack {
                     Text("Name: \(networkClient.annoyance.name)")
-                    Text("Accuracy: \(networkClient.annoyance.accuracy)")
-                    Text("Effect chance: \(networkClient.annoyance.effect_chance)")
+                    let accuracy=networkClient.annoyance.accuracy ?? 0
+                    if (accuracy != 0){
+                        Text("Accuracy: \(accuracy)")
+                    } else {
+                        Text("Accuracy: --")
+                    }
+                    let odds: Int=networkClient.annoyance.effect_chance ?? 0
+                    Text("Effect chance: \(odds)")
                     Text("Damage type: \(networkClient.annoyance.damage_class.name)")
-                    Text("Base power: \(networkClient.annoyance.power)")
+                    let power: Int=networkClient.annoyance.power ?? 0
+                    Text("Base power: \(power)")
                     Text("Uses: \(networkClient.annoyance.pp)")
                     Text("Priority: \(networkClient.annoyance.priority)")
-                    Text("Effect: \(networkClient.annoyance.effect_entries.first?.short_effect)")
+                    let effect: String=networkClient.annoyance.effect_entries.first?.short_effect ?? "No effect"
+                    Text("Effect: \(effect)")
                 }
                 .onTapGesture {
                     withAnimation(.linear(duration: 0.2)){
