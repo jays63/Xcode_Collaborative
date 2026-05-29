@@ -11,8 +11,10 @@ struct ItemSearchRes :View {
             Color(.white)
                 .ignoresSafeArea()
             VStack {
+                let name=networkClient.singleItem.name.replacingOccurrences(of: "-", with: " ")
                 Text("Item name: \(networkClient.singleItem.name)")
-                Text("Item effect: \(networkClient.singleItem.effect_entries.first?.short_effect)")
+                let effect: String=networkClient.singleItem.effect_entries.first?.short_effect ?? "None"
+                Text("Item effect: \(effect)")
             }
         }
     }
