@@ -14,6 +14,11 @@ struct move: Codable{
 
 struct entry: Codable {
     var short_effect: String;
+    var language: Lang
+}
+
+struct Lang: Codable{
+    var name: String
 }
 
 struct damageClass: Codable {
