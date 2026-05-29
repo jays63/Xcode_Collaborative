@@ -63,7 +63,8 @@ struct ContentView: View {
     
     func search(entered: searcher, target: String) {
         Task{
-            await networkClient.search(input: target, queryType: entered)
+            let thing=target.replacingOccurrences(of: " ", with: "-")
+            await networkClient.search(input: thing, queryType: entered)
         }
     }
 }

@@ -27,8 +27,11 @@ struct MoveSearchRes :View {
                     Text("Base power: \(power)")
                     Text("Uses: \(networkClient.annoyance.pp)")
                     Text("Priority: \(networkClient.annoyance.priority)")
-                    let effect: String=networkClient.annoyance.effect_entries.first?.short_effect ?? "No effect"
-                    Text("Effect: \(effect)")
+                    let filtered = networkClient.annoyance.effect_entries.filter { effect in
+                        effect.language.name == "en"
+                    }.first?.short_effect ?? "No english version"
+                    Text("Effect: \(filtered)")
+                    
                 }
                 .onTapGesture {
                     withAnimation(.linear(duration: 0.2)){
