@@ -21,7 +21,6 @@ struct PokemonSearchRes :View {
                 ForEach(networkClient.mon.stats, id: \.base_stat) { thing in
                     Text("\(thing.stat.name): \(thing.base_stat)")
                 }
-                
             }
         }
     }
