@@ -9,8 +9,11 @@ struct ContentView: View {
     @State private var text: String = ""
     var body: some View {
         ZStack{
-            Image(.pokeball)
                 VStack(alignment: .center, spacing: 30){
+                    Image(.pokeball)
+                        .onTapGesture {
+                            //On tap, this would open settings up I think
+                        }
                     Text("Welcome to the pokedex! What do you want to find?")
                         .multilineTextAlignment(.center)
                     NavigationStack{
