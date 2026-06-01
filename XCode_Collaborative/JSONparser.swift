@@ -61,6 +61,7 @@ struct notes: Codable {
 
 struct Note: Codable{
     var short_effect: String;
+    var language: Lang
 }
 
 struct PokemonTypes: Codable{

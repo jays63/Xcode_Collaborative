@@ -12,7 +12,10 @@ struct ItemSearchRes :View {
                 .ignoresSafeArea()
             VStack {
                 let name=networkClient.singleItem.name.replacingOccurrences(of: "-", with: " ")
-                Text("Item name: \(networkClient.singleItem.name)")
+                Text("Item name: \(name)")
+                let filtered = networkClient.singleItem.effect_entries.filter { effect in
+                    effect.language.name == "en"
+                }.first?.short_effect ?? "No english version"
                 let effect: String=networkClient.singleItem.effect_entries.first?.short_effect ?? "None"
                 Text("Item effect: \(effect)")
             }

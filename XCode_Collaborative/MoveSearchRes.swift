@@ -13,7 +13,8 @@ struct MoveSearchRes :View {
                 .ignoresSafeArea()
             if visible{
                 VStack {
-                    Text("Name: \(networkClient.annoyance.name)")
+                    let name=networkClient.annoyance.name.replacingOccurrences(of: "-", with: " ")
+                    Text("Name: \(name)")
                     let accuracy=networkClient.annoyance.accuracy ?? 0
                     if (accuracy != 0){
                         Text("Accuracy: \(accuracy)")
