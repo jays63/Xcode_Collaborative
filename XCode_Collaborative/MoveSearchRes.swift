@@ -29,7 +29,7 @@ struct MoveSearchRes :View {
                     Text("Uses: \(networkClient.annoyance.pp)")
                     Text("Priority: \(networkClient.annoyance.priority)")
                     let filtered = networkClient.annoyance.effect_entries.filter { effect in
-                        effect.language.name == "en"
+                        effect.language.name == languageChoice
                     }.first?.short_effect ?? "No english version"
                     Text("Effect: \(filtered)")
                     
