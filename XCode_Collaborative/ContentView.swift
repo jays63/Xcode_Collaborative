@@ -14,10 +14,9 @@ struct ContentView: View {
                 .scaledToFill()
                 .ignoresSafeArea()
                 VStack(alignment: .center, spacing: 30){
-                    Image(.pokeball)
-                        .onTapGesture {
-                            //On tap, this would open settings up I think
-                        }
+                    NavigationLink(destination: SettingsView()){
+                        Image(.pokeball)
+                    }
                     Text("Welcome to the pokedex! What do you want to find?")
                         .multilineTextAlignment(.center)
                     NavigationStack{
