@@ -9,7 +9,10 @@ struct ContentView: View {
     @State private var text: String = ""
     var body: some View {
         ZStack{
-            Image(.searchBackground)
+            Image(.splashimg)
+                .resizable()
+                .scaledToFill()
+                .ignoresSafeArea()
                 VStack(alignment: .center, spacing: 30){
                     Image(.pokeball)
                         .onTapGesture {
