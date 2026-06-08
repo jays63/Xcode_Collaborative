@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @AppStorage var languageChoice: String
+    @AppStorage var languageChoice: String="en"
     var body: some View {
         Menu {
               Button("en", action: { languageChoice = "Option 1" })
