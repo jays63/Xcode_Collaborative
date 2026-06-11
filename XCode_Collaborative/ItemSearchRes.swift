@@ -15,7 +15,7 @@ struct ItemSearchRes :View {
                 let name=networkClient.singleItem.name.replacingOccurrences(of: "-", with: " ")
                 Text("Item name: \(name)")
                 let filtered = networkClient.singleItem.effect_entries.filter { effect in
-                    effect.language.name == "en"
+                    effect.language.name == languageChoice
                 }.first?.short_effect ?? "No english version"
                 let effect: String=networkClient.singleItem.effect_entries.first?.short_effect ?? "None"
                 Text("Item effect: \(effect)")
