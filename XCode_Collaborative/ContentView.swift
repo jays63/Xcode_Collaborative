@@ -28,7 +28,14 @@ struct ContentView: View {
                             .multilineTextAlignment(.center)
                     }
                     NavigationStack{
-                        Button("Browse dex"){
+                        Button(if (languageChoice="en"){
+                               "Browse dex"
+                        } else if (languageChoice="de"){
+                            "Suchen"
+                        } else {
+                            "Non, je déteste les Français."
+                        }
+                              ){
                             pokemonSearch = true
                         }
                         .navigationDestination(isPresented: $pokemonSearch){
