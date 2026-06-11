@@ -33,7 +33,7 @@ struct ContentView: View {
                         }
                         .navigationDestination(isPresented: $pokemonSearch){
                             VStack  {
-                                PokemonSearchRes()
+                                PokemonSearchRes(languageChoice: languageChoice)
                             }
                             .searchable(text: $text)
                             .onSubmit (of: .search){
@@ -45,7 +45,7 @@ struct ContentView: View {
                         }
                         .navigationDestination(isPresented: $itemSearch){
                             VStack{
-                                ItemSearchRes()
+                                ItemSearchRes(languageChoice: $languageChoice)
                             }
                             .searchable(text: $text)
                             .onSubmit (of: .search){
@@ -57,7 +57,7 @@ struct ContentView: View {
                         }
                         .navigationDestination(isPresented: $moveSearch){
                             VStack{
-                                MoveSearchRes()
+                                MoveSearchRes(languageChoice: languageChoice)
                             }
                             .searchable(text: $text)
                             .onSubmit (of: .search){
