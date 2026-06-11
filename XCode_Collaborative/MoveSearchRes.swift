@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct MoveSearchRes :View {
+    private var languageChoice: String
     @Environment(NetworkClient.self) private var networkClient
     @State private var visible: Bool = true
     private let columns = [
