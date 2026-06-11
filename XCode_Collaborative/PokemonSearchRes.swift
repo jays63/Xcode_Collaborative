@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct PokemonSearchRes :View {
+    private var languageChoice: String
     @Environment(NetworkClient.self) private var networkClient
     private let columns = [
         GridItem(.flexible()),
