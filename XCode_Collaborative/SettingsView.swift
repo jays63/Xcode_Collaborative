@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @AppStorage var languageChoice: String
+    @Binding var languageChoice:String
     var body: some View {
         Menu {
               Button("en", action: { languageChoice = "Option 1" })
@@ -13,5 +13,6 @@ struct SettingsView: View {
                 .background(Color.blue.opacity(0.1))
                 .cornerRadius(8)
             }
+        Text("Translations are not guaranteed to work")
     }
 }
