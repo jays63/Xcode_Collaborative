@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct MoveSearchRes :View {
-    private var languageChoice: String
+    var languageChoice: String
     @Environment(NetworkClient.self) private var networkClient
     @State private var visible: Bool = true
     private let columns = [
@@ -31,14 +31,9 @@ struct MoveSearchRes :View {
                     Text("Priority: \(networkClient.annoyance.priority)")
                     let filtered = networkClient.annoyance.effect_entries.filter { effect in
                         effect.language.name == languageChoice
-                    }.first?.short_effect ?? "No english version"
+                    }.first?.short_effect ?? "No language version"
                     Text("Effect: \(filtered)")
                     
-                }
-                .onTapGesture {
-                    withAnimation(.linear(duration: 0.2)){
-                        visible.toggle()
-                    }
                 }
             }
         }

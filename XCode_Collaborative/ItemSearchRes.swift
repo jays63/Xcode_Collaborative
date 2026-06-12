@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ItemSearchRes :View {
-    private var languageChoice: String
+    var languageChoice: String
     @Environment(NetworkClient.self) private var networkClient
     private let columns = [
         GridItem(.flexible()),
@@ -16,7 +16,7 @@ struct ItemSearchRes :View {
                 Text("Item name: \(name)")
                 let filtered = networkClient.singleItem.effect_entries.filter { effect in
                     effect.language.name == languageChoice
-                }.first?.short_effect ?? "No english version"
+                }.first?.short_effect ?? "No such language version"
                 let effect: String=networkClient.singleItem.effect_entries.first?.short_effect ?? "None"
                 Text("Item effect: \(effect)")
             }

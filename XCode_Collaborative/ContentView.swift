@@ -15,8 +15,10 @@ struct ContentView: View {
                 .scaledToFill()
                 .ignoresSafeArea()
                 VStack(alignment: .center, spacing: 30){
-                    NavigationLink(destination: SettingsView(languageChoice: $languageChoice)){
-                        Image(.pokeball)
+                    NavigationStack{
+                        NavigationLink(destination: SettingsView(languageChoice: $languageChoice)){
+                            Image(.pokeball)
+                        }
                     }
                     if (languageChoice=="en"){
                         Text("Welcome to the pokédex! What do you want to find?")
@@ -28,14 +30,14 @@ struct ContentView: View {
                             .multilineTextAlignment(.center)
                     }
                     NavigationStack{
-                        Button(if (languageChoice="en"){
-                               "Browse dex"
-                        } else if (languageChoice="de"){
+                        var x: String=if (languageChoice=="en"){
+                            "Browse dex"
+                        } else if (languageChoice=="de"){
                             "Suchen"
                         } else {
                             "Non, je déteste les Français."
                         }
-                              ){
+                        Button(x){
                             pokemonSearch = true
                         }
                         .navigationDestination(isPresented: $pokemonSearch){
@@ -47,19 +49,33 @@ struct ContentView: View {
                                 search(entered: .mon, target: text)
                             }
                         }
-                        Button("View items"){
+                        var itemText: String=if (languageChoice=="en"){
+                            "Browse dex"
+                        } else if (languageChoice=="de"){
+                            "Suchen Sache"
+                        } else {
+                            "Non, je déteste les Français."
+                        }
+                        Button(itemText){
                             itemSearch=true
                         }
                         .navigationDestination(isPresented: $itemSearch){
                             VStack{
-                                ItemSearchRes(languageChoice: $languageChoice)
+                                ItemSearchRes(languageChoice: languageChoice)
                             }
                             .searchable(text: $text)
                             .onSubmit (of: .search){
                                 search(entered: .item, target: text)
                             }
                         }
-                        Button("Browse moves"){
+                        var moveText: String=if (languageChoice=="en"){
+                            "Browse dex"
+                        } else if (languageChoice=="de"){
+                            "Suchen Attacken"
+                        } else {
+                            "Non, je déteste les Français."
+                        }
+                        Button(moveText){
                             moveSearch=true
                         }
                         .navigationDestination(isPresented: $moveSearch){
