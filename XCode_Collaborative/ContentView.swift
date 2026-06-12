@@ -9,16 +9,15 @@ struct ContentView: View {
     @State private var text: String = ""
     @AppStorage("language") private var languageChoice: String="en"
     var body: some View {
-        ZStack{
-            Image(.splashimg)
-                .resizable()
-                .scaledToFill()
-                .ignoresSafeArea()
+        NavigationStack{
+            ZStack{
+                Image(.splashimg)
+                    .resizable()
+                    .scaledToFill()
+                    .ignoresSafeArea()
                 VStack(alignment: .center, spacing: 30){
-                    NavigationStack{
-                        NavigationLink(destination: SettingsView(languageChoice: $languageChoice)){
-                            Image(.pokeball)
-                        }
+                    NavigationLink(destination: SettingsView(languageChoice: $languageChoice)){
+                        Image(.pokeball)
                     }
                     if (languageChoice=="en"){
                         Text("Welcome to the pokédex! What do you want to find?")
@@ -29,7 +28,6 @@ struct ContentView: View {
                         Text("Non, je déteste les Français.")
                             .multilineTextAlignment(.center)
                     }
-                    NavigationStack{
                         var x: String=if (languageChoice=="en"){
                             "Browse dex"
                         } else if (languageChoice=="de"){
@@ -87,7 +85,6 @@ struct ContentView: View {
                                 search(entered: .move, target: text)
                             }
                         }
-                    }
                     Link("A damage calculator, in your very own pocket!", destination: URL(string: "https://calc.pokemonshowdown.com/")!)
                         .buttonStyle(.glassProminent)
                     Link("Visit the battle simulator (Not affiliated)", destination: URL(string: "https://pokemonshowdown.com/")!)
@@ -95,6 +92,7 @@ struct ContentView: View {
                     
                 }
                 .padding()
+            }
         }
     }
     
